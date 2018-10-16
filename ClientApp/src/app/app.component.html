@@ -16,5 +16,12 @@
   <li>
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
+
 </ul>
+
+<div *ngIf=“memes” *ngFor=“let meme of memes”>
+  {{
+  <iframe width="560" height="315" ng-src="{{meme.url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />
+  }}
+</div> />
 

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ChillFlix';
+  title = 'MemeFlix';
+
+  public memes: Memes[];
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    http.get<Memes[]>(baseUrl + 'api/EmbeddedVideo/Memes').subscribe(result => {
+      this.memes = result;
+    }, error => console.error(error));
+  }
+}
+
+interface Memes {
+  url: String;
+
 }
