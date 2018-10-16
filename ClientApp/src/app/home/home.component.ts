@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent {
 }
 
-export class FetchDataComponent {
+export class FetchHomeComponent {
   public memes: Memes[];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {

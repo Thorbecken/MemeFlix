@@ -6,7 +6,7 @@
 
 <p>For people with good tasting we also have these equisite delicasies</p>
 
-<div *ngIf=“Memes” *ngFor=“let meme of Memes”>
+<div *ngIf=“memes” *ngFor=“let meme of memes”>
   {{
   <iframe width="560" height="315" ng-src="{{meme.url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />
   }}
