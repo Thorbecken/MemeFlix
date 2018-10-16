@@ -21,8 +21,7 @@ namespace MemeFlix.Controllers
         {
             return Enumerable.Range(1, memeStrings.Length).Select(x => new Meme(memeStrings[x-1]));
         }
-
-        
+                
         public class Meme
         {
             public string Url { get; set; }
