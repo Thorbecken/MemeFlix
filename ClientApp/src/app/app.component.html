@@ -7,9 +7,8 @@
 </div>
 <h2>Here are some memes to help you get started: </h2>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UhRXn2NRiWI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe id="moviePlayer" width="560" height="315" src="{{videoUrl}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <div *ngIf="memes">
-  <div *ngFor="let meme of memes">
-    <iframe width="560" height="315" src="{{meme.url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
+  <app-movie-player *ngFor="let meme of memes" [videoUrl]="meme.url">
+  </app-movie-player>
 </div>

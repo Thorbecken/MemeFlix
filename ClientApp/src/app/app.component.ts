@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -8,28 +8,37 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
   styleUrls: ['./app.component.css'],
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'MemeFlix';
 
   public memes: Memes[];
-  public videourl: SafeResourceUrl[];
+  public videoUrl: string;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    let id = 'an-id-goes-here';
-    let url = `https://www.youtube.com/embed/${id}`;
+    let id = 'dQw4w9WgXcQ';
+    this.videoUrl = `https://www.youtube.com/embed/${id}`;
 
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    //this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/dQw4w9WgXcQ');
+
+    // this.http.get<Memes[]>('https://localhost:44333/api/EmbeddedVideo/Memes').subscribe(
+    //   result => {
+    //     this.memes = result;
+    //   },
+    //   error => console.error(error));
+  }
+
+  ngAfterViewInit()
+  {
+    let moviePlayer = document.getElementById('moviePlayer');
+    moviePlayer.setAttribute('src', this.videoUrl);
   }
 
   ngOnDestroy() { }
-  public memes: Memes[];
-  constructor(private http: HttpClient) { //constructor(private http: HttpClient, @Inject(BASE_URL) baseUrl: string) { 
-  http.get<Memes[]>('https://localhost:44333/api/EmbeddedVideo/Memes').subscribe(result => { //    http.get<Memes[]>(baseUrl + 'api/EmbeddedVideo/Memes').subscribe(result => { 
-  this.memes = result;
-   }, error => console.error(error));
-  }
+}
 
 
 interface Memes {
