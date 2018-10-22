@@ -1,22 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { MoviePlayerComponent } from './movie-player/movie-player.component';
+import { SubscriptionPageComponent } from './subscription-page/subscription-page.component';
 
-import { InjectionToken } from '@angular/core';
-export const BASE_URL = new InjectionToken<string>('BASE_URL');
 @NgModule({
-  declarations: [
-    AppComponent
+   declarations: [
+      AppComponent,
+    MoviePlayerComponent,
+    routingComponent,
+    SubscriptionPageComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
-  ],
-  providers: [{ provide: BASE_URL, useValue: "https://localhost:44333/" }],
-  bootstrap: [AppComponent]
+   imports: [
+     BrowserModule,
+     HttpClientModule,
+     AppRoutingModule
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
 
