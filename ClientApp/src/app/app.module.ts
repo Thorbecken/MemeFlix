@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,6 +19,7 @@ import { MemePlayerComponent } from './meme-player/meme-player.component';
   ],
    imports: [
      BrowserModule,
+     FormsModule,
      HttpClientModule,
      AppRoutingModule
    ],

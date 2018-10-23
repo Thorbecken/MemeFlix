@@ -1,8 +1,12 @@
 <img src="https://i.ytimg.com/vi/f4EPf-UUngg/maxresdefault.jpg">  <!-- Link to Hi stranger meme -->
 <p>
-Hi stranger. I see you're also a fan of the dank memes. Please submit your name down below to subscribe to our services.
+  Hi stranger. I see you're also a fan of the dank memes. Please submit your name down below to subscribe to our services.
 </p>
-<input #name type="text"> <button (click)="submitName()">Submit</button>
-                          <br />
-                          <h2>{{submittedName}}</h2>
-<img src="{{nameIsSubmitted}}" />
+<input #name type="text" [(ngModel)]="modelName">
+<button (click)="submitName(name.value)">Submit</button>
+<br />
+<img *ngIf="!nameIsSubmitted; Else oneOfUs" src="https://media.makeameme.org/created/yes-join-us.jpg">
+<ng-template #oneOfUs>
+  <h2 >"Thank you {{modelName}} for submitting your name"</h2>
+  <img *ngIf="nameIsSubmitted" src="https://i.pinimg.com/originals/a1/e6/c4/a1e6c453a4061d491ba17a9f7055c343.jpg" />
+</ng-template>
