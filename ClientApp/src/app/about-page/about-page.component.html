@@ -1,3 +1,10 @@
 <p>
   This is the best body your damn eyes have ever seen!
 </p>
+<p>{{aboutText}}</p>
+<p>The variable red = {{red}}</p>
+
+<button (click)="onClick()">Change colour</button>
+<p [ngClass]="dynamicStyles">
+  This color and font is dynamicly generated!
+</p>

@@ -1,3 +1,9 @@
 p {
 color: mediumvioletred
 }
+.red {
+color: red;
+}
+.italic {
+  font-style: italic;
+}
