@@ -5,6 +5,6 @@
 <p>The variable red = {{red}}</p>
 
 <button (click)="onClick()">Change colour</button>
-<p [ngClass]="dynamicStyles">
+<p [ngClass]="red ? dynamicStyles: null">
   This color and font is dynamicly generated!
 </p>
