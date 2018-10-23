@@ -10,12 +10,6 @@
 <nav>
   <a routerLink="/about" routerLinkActive="active">About</a>
   <a routerLink="/subscription" routerLinkActive="active">Subscription</a>
+  <a routerLink="/home" routerLinkActive="active">Home</a>
 </nav>
 <router-outlet></router-outlet>
-<h2>Here are some memes to help you get started: </h2>
-
-<iframe id="moviePlayer" width="560" height="315" src="{{videoUrl}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<div *ngIf="memes">
-  <app-movie-player *ngFor="let meme of memes" [videoUrl]="meme.url">
-  </app-movie-player>
-</div>
