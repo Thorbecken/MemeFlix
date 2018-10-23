@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AboutPageComponent } from "./about-page/about-page.component";
 import { SubscriptionPageComponent } from "./subscription-page/subscription-page.component";
+import { HomePageComponent } from "./home-page/home-page.component";
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'subscription',
     component: SubscriptionPageComponent
+  },
+  {
+    path: 'home',
+    component: HomePageComponent
   }
 ];
 
