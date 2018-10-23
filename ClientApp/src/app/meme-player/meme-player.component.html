@@ -1,4 +1,6 @@
 <p>
   meme-player works!
 </p>
-<iframe width="560" height="315" src="getEmbeddedUrl()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div *ngFor="let meme of memeList">
+  <iframe width="560" height="315" [src]="getEmbeddedUrl(meme)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>

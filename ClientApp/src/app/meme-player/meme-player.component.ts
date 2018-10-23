@@ -8,15 +8,28 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./meme-player.component.css']
 })
 export class MemePlayerComponent implements OnInit {
-
-  public meme = "dQw4w9WgXcQ"
+  memeList = [
+    {
+      name: "trololo",
+      url:'oavMtUWDBTM'
+    },
+    {
+      name: "rickroll",
+      url: 'dQw4w9WgXcQ'
+    },
+    {
+      name: "darude - sandstorm",
+      url: 'y6120QOlsfU'
+    }
+  ]
+  //public meme = "dQw4w9WgXcQ"
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
 
-  getEmbeddedUrl() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/{{meme}}?ecver=2')
+  getEmbeddedUrl(meme) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + meme.url + "?ecver=2");
   }
 
 }
