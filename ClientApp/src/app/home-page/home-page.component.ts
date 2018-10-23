@@ -7,6 +7,7 @@ import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit, AfterViewInit {
   title = 'MemeFlix';
+  public searchRequest = "";
 
   constructor() { }
 
