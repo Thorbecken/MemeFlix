@@ -3,8 +3,14 @@ import { Routes, RouterModule } from "@angular/router";
 import { AboutPageComponent } from "./about-page/about-page.component";
 import { SubscriptionPageComponent } from "./subscription-page/subscription-page.component";
 import { HomePageComponent } from "./home-page/home-page.component";
+import { PageNotFoundComponent } from "src/app/page-not-found/page-not-found.component";
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   {
     path: 'about',
     component: AboutPageComponent
@@ -16,6 +22,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

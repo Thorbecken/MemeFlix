@@ -9,6 +9,7 @@ import { SubscriptionPageComponent } from './subscription-page/subscription-page
 import { HomePageComponent } from './home-page/home-page.component';
 import { MemePlayerComponent } from './meme-player/meme-player.component';
 import { MemeService } from './meme.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
    declarations: [
@@ -16,7 +17,8 @@ import { MemeService } from './meme.service';
     routingComponent,
     SubscriptionPageComponent,
     HomePageComponent,
-    MemePlayerComponent
+    MemePlayerComponent,
+    PageNotFoundComponent
   ],
    imports: [
      BrowserModule,
