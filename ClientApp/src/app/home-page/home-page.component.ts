@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
+import { MemeService } from '../meme.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,10 +8,13 @@ import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit, AfterViewInit {
   title = 'MemeFlix';
+  public searchRequest = "";
+  public memes = [];
 
-  constructor() { }
+  constructor(private _memeService: MemeService) { }
 
   ngOnInit() {
+    this.memes = this._memeService.getMemes();
   }
 
   ngAfterViewInit() {

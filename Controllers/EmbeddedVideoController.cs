@@ -11,23 +11,38 @@ namespace MemeFlix.Controllers
     [Route("api/[controller]")]
     public class EmbeddedVideoController : Controller
     {
-        public static string[] memeStrings = new[]
+        public static Meme[] memeStrings = new[]
         {
-            "https://www.youtube.com/embed/kfVsfOSbJY0", "https://www.youtube.com/embed/dQw4w9WgXcQ"
+            new Meme {
+            Name = "trololo",
+            Url = "oavMtUWDBTM"
+            },
+            new Meme{
+            Name = "rickroll",
+            Url = "dQw4w9WgXcQ"
+            },
+            new Meme{
+            Name = "darude - sandstorm",
+            Url = "y6120QOlsfU"
+            }
         };
 
         [HttpGet("[action]")]
         public IEnumerable<Meme> Memes()
         {
-            return Enumerable.Range(1, memeStrings.Length).Select(x => new Meme(memeStrings[x-1]));
+            return Enumerable.Range(1, memeStrings.Length).Select(x => new Meme(memeStrings[x-1].Name, memeStrings[x - 1].Url));
         }
                 
         public class Meme
         {
+            public string Name { get; set; }
             public string Url { get; set; }
 
-            public Meme(string url)
+            public Meme() { }
+
+            public Meme(string name,string url)
             {
+                this.Name = name;
                 this.Url = url;
             }
         }
