@@ -2,5 +2,6 @@
   Your searchparameter is {{searchParameter}}
 </p>
 <div *ngFor="let meme of memes">
+
   <iframe width="560" height="315" [src]="getEmbeddedUrl(meme)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>

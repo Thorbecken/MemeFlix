@@ -1,4 +1,5 @@
 import { Component, Inject, Input, OnInit, AfterViewInit } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -14,7 +15,6 @@ export class MemePlayerComponent implements OnInit {
   @Input('parentMemes')
   public memes;
   
-  //public meme = "dQw4w9WgXcQ"
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
