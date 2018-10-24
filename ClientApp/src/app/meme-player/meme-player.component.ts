@@ -10,20 +10,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class MemePlayerComponent implements OnInit {
   @Input('parentData')
   public searchParameter;
-  memeList = [
-    {
-      name: "trololo",
-      url:'oavMtUWDBTM'
-    },
-    {
-      name: "rickroll",
-      url: 'dQw4w9WgXcQ'
-    },
-    {
-      name: "darude - sandstorm",
-      url: 'y6120QOlsfU'
-    }
-  ]
+
+  @Input('parentMemes')
+  public memes;
+  
   //public meme = "dQw4w9WgXcQ"
   constructor(private sanitizer: DomSanitizer) { }
 

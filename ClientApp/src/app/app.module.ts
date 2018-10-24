@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SubscriptionPageComponent } from './subscription-page/subscription-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MemePlayerComponent } from './meme-player/meme-player.component';
+import { MemeService } from './meme.service';
 
 @NgModule({
    declarations: [
@@ -22,8 +23,8 @@ import { MemePlayerComponent } from './meme-player/meme-player.component';
      FormsModule,
      HttpClientModule,
      AppRoutingModule
-   ],
-   providers: [],
+  ],
+  providers: [MemeService],
    bootstrap: [
       AppComponent
    ]
