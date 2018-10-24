@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';;
+import { IMeme } from './meme';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemeService {
-  public memes: Meme[];
-  constructor(private http: HttpClient) { //constructor(private http: HttpClient, @Inject(BASE_URL) baseUrl: string) { 
-    http.get<Meme[]>('https://localhost:44333/api/EmbeddedVideo/Memes').subscribe(result => { //    http.get<Memes[]>(baseUrl + 'api/EmbeddedVideo/Memes').subscribe(result => { 
-      this.memes = result;
-    }, error => console.error(error));
+  constructor(private http: HttpClient) {
   }
 
-  getMemes() {
-    return this.memes;
+  getMemes(): Observable<IMeme[]> {
+    return this.http.get<IMeme[]>('https://localhost:44333/api/EmbeddedVideo/Memes')
   }
 
-}
-interface Meme {
-  url: String;
 }

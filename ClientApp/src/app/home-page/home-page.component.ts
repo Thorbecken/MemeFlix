@@ -14,7 +14,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   constructor(private _memeService: MemeService) { }
 
   ngOnInit() {
-    this.memes = this._memeService.getMemes();
+    this._memeService.getMemes()
+      .subscribe(data => this.memes = data);
   }
 
   ngAfterViewInit() {
