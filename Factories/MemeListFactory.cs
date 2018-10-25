@@ -8,6 +8,8 @@ using System.Data.OleDb;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using MemeFlix.Models;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
 
 namespace MemeFlix.Factories
 {
@@ -50,58 +52,67 @@ namespace MemeFlix.Factories
             if (filePath == null)
             { return null; }
 
-            var fileLocation = string.Format("{0}\\..\\assets\\{1}", Directory.GetCurrentDirectory(), filePath);
+            var fileLocation = string.Format("{0}\\..\\MemeFlix\\assets\\{1}", Directory.GetCurrentDirectory(), filePath);
 
-            //Create COM Objects. Create a COM object for everything that is referenced
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(fileLocation);
-            Excel._Worksheet xlWorksheet = (Excel._Worksheet)xlWorkbook.Sheets[1];
-            Excel.Range xlRange = xlWorksheet.UsedRange;
+            IWorkbook workbook;
+            using (FileStream stream = new FileStream(fileLocation, FileMode.Open, FileAccess.Read))
+            {
+                workbook = new HSSFWorkbook(stream);
+            }
 
-            int rowCount = xlRange.Rows.Count;
-            int colCount = xlRange.Columns.Count;
+            ISheet sheet = workbook.GetSheetAt(0); // zero-based index of your target sheet
+            DataTable dt = new DataTable(sheet.SheetName);
+
+            // write header row
+            IRow headerRow = sheet.GetRow(0);
+            foreach (ICell headerCell in headerRow)
+            {
+                dt.Columns.Add(headerCell.ToString());
+            }
+
+            // write the rest
+            int rowIndex = 0;
+            foreach (IRow row in sheet)
+            {
+                // skip header row
+                if (rowIndex++ == 0) continue;
+                DataRow dataRow = dt.NewRow();
+                dataRow.ItemArray = row.Cells.Select(c => c.ToString()).ToArray();
+                dt.Rows.Add(dataRow);
+            }
+            
+            int rowCount = dt.Rows.Count;
+            int colCount = dt.Columns.Count;
 
             List<Meme> MemeList = new List<Meme>();
 
-            for (int row = 1; row <= rowCount; row++) {
-                if(row <= 2)
+            for (int row = 1; row < rowCount; row++) {
+                if(row == 0)
                     { continue; }
                 Meme meme = new Meme() { }; 
-                for (int collumn = 1; collumn <= colCount; collumn++)
+                for (int collumn = 1; collumn < colCount; collumn++)
                 {
-                    if (collumn == 2) {
-                        meme.Url = GetValue(row, collumn).Remove(cutPoint);
+                    if (collumn == 1) {
+                        string value = GetValue(row, collumn);
+                        if (value.Length > cutPoint) { 
+                        meme.Url =  GetValue(row, collumn).Remove(0, cutPoint);
                     }
-                    if (collumn == 4) {
+                        else {
+                            meme.Url =  "";
+                        }
+                    }
+                    if (collumn == 3) {
                         meme.Name = GetValue(row, collumn);
                     }
                 }
+                MemeList.Add(meme);
             }
 
             string GetValue(int row, int collumn)
-                {
-                    return (string)(xlRange.Cells[1, 1] as Excel.Range).Value;
+            {
+                var value =  (string)dt.Rows[row][collumn];
+                return value;
             }
-
-            //cleanup
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            //rule of thumb for releasing com objects:
-            //  never use two dots, all COM objects must be referenced and released individually
-            //  ex: [somthing].[something].[something] is bad
-
-            //release com objects to fully kill excel process from running in the background
-            Marshal.ReleaseComObject(xlRange);
-            Marshal.ReleaseComObject(xlWorksheet);
-
-            //close and release
-            xlWorkbook.Close();
-            Marshal.ReleaseComObject(xlWorkbook);
-
-            //quit and release
-            xlApp.Quit();
-            Marshal.ReleaseComObject(xlApp);
 
             return MemeList;
         }
