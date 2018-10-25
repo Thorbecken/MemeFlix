@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using MemeFlix.Factories;
+using MemeFlix.Models;
 
 namespace MemeFlix.Controllers
 {
@@ -32,19 +32,12 @@ namespace MemeFlix.Controllers
         {
             return Enumerable.Range(1, memeStrings.Length).Select(x => new Meme(memeStrings[x-1].Name, memeStrings[x - 1].Url));
         }
-                
-        public class Meme
+
+        [HttpGet("[action]")]
+        public IEnumerable<Meme> MemePlaylist(string playList)
         {
-            public string Name { get; set; }
-            public string Url { get; set; }
-
-            public Meme() { }
-
-            public Meme(string name,string url)
-            {
-                this.Name = name;
-                this.Url = url;
-            }
+            return Enumerable.Range(1, memeStrings.Length).Select(x => new Meme(memeStrings[x - 1].Name, memeStrings[x - 1].Url));
+            //return MemeListFactory.GetExcelFile(playList);
         }
     }
 }
