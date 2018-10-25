@@ -36,8 +36,7 @@ namespace MemeFlix.Controllers
         [HttpGet("[action]")]
         public IEnumerable<Meme> MemePlaylist(string playList)
         {
-            return Enumerable.Range(1, memeStrings.Length).Select(x => new Meme(memeStrings[x - 1].Name, memeStrings[x - 1].Url));
-            //return MemeListFactory.GetExcelFile(playList);
+           return MemeListFactory.GetExcelFile(playList);
         }
     }
 }
