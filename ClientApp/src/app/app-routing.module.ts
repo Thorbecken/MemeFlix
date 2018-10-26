@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: './Module/admin/admin.component#AdminModule'
+    loadChildren: './Module/admin/admin.module#AdminModule'
   },
   {
     path: '**',
@@ -34,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 

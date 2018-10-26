@@ -10,8 +10,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MemePlayerComponent } from './meme-player/meme-player.component';
 import { MemeService } from './services/meme.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AdminComponent } from './Module/admin/admin.component';
-import { DashboardComponent } from './Module/admin/components/dashboard/dashboard.component';
 
 @NgModule({
    declarations: [
@@ -20,9 +18,7 @@ import { DashboardComponent } from './Module/admin/components/dashboard/dashboar
     SubscriptionPageComponent,
     HomePageComponent,
     MemePlayerComponent,
-    PageNotFoundComponent,
-    AdminComponent,
-    DashboardComponent
+    PageNotFoundComponent
   ],
    imports: [
      BrowserModule,

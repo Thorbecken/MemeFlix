@@ -5,6 +5,11 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 const adminRoutes: Routes = [
   {
+    path: '',
+    component: DashboardComponent,
+    pathMatch: 'full'
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent
   }
@@ -16,4 +21,3 @@ const adminRoutes: Routes = [
 })
 
 export class AdminRoutingModule { }
-export const routingComponent = [AboutPageComponent]
