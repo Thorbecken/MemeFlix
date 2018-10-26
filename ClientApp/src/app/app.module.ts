@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { SubscriptionPageComponent } from './subscription-page/subscription-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MemePlayerComponent } from './meme-player/meme-player.component';
-import { MemeService } from './meme.service';
+import { MemeService } from './services/meme.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({

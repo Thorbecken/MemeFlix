@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AboutPageComponent } from "./about-page/about-page.component";
 import { SubscriptionPageComponent } from "./subscription-page/subscription-page.component";
 import { HomePageComponent } from "./home-page/home-page.component";
-import { PageNotFoundComponent } from "src/app/page-not-found/page-not-found.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {
