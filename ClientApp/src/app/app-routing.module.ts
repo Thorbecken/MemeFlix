@@ -24,13 +24,17 @@ const routes: Routes = [
     component: HomePageComponent
   },
   {
+    path: 'admin',
+    loadChildren: './Module/admin/admin.module#AdminModule'
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 
