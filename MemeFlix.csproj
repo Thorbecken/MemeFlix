@@ -17,7 +17,6 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1000" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="NPOI.Core.Extension" Version="1.0.0" />
   </ItemGroup>
@@ -35,11 +34,15 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
     <None Remove="ClientApp\src\app\meme.ts" />
+    <None Remove="ClientApp\src\app\Module\admin\admin-routing.module.ts" />
+    <None Remove="ClientApp\src\app\Module\admin\admin.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\meme.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Module\admin\admin-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Module\admin\admin.module.ts" />
   </ItemGroup>
 
   <ItemGroup>

@@ -24,6 +24,10 @@ const routes: Routes = [
     component: HomePageComponent
   },
   {
+    path: 'admin',
+    loadChildren: './Module/admin/admin.component#AdminModule'
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
