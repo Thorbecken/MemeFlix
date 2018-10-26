@@ -5,19 +5,17 @@ using System.Threading.Tasks;
 
 namespace MemeFlix.Models
 {
-    
-        public class Meme
+    public class Meme
+    {
+        public int MemeId { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+
+        public Meme() { }
+        public Meme(string name, string url)
         {
-            public string Name { get; set; }
-            public string Url { get; set; }
-
-            public Meme() { }
-
-            public Meme(string name, string url)
-            {
-                this.Name = name;
-                this.Url = url;
-            }
+            this.Name = name;
+            this.Url = url;
         }
-    
+    }
 }
