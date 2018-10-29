@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AboutPageComponent } from "../../about-page/about-page.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { MemeCreatorComponent } from "./components/meme-creator/meme-creator.component";
 
 const adminRoutes: Routes = [
   {
@@ -12,6 +13,10 @@ const adminRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'meme-creator',
+    component: MemeCreatorComponent
   }
 ];
 

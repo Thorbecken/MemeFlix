@@ -3,6 +3,7 @@ import { AdminRoutingModule } from "./admin-routing.module";
 import { AdminComponent } from "./admin.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { NgModule } from '@angular/core';
+import { MemeCreatorComponent } from './components/meme-creator/meme-creator.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { NgModule } from '@angular/core';
   ],
   declarations: [
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    MemeCreatorComponent
   ]
 })
 export class AdminModule { }
