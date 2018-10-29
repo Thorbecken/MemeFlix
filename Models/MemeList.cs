@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace MemeFlix.Models
 {
-    public class Meme
+    public class MemeList
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Url { get; set; }
 
-        public Meme() { }
-        public Meme(string name, string url)
-        {
+        public ICollection<Meme> Memes { get; set; }
+
+        public MemeList() { }
+        public MemeList(List<Meme> memeList, string name) {
+            this.Memes = memeList;
             this.Name = name;
-            this.Url = url;
         }
     }
 }
