@@ -86,6 +86,7 @@ namespace MemeFlix.Controllers
         [HttpPost]
         public async Task<IActionResult> PostMeme([FromBody] Meme meme)
         {
+            Console.WriteLine(meme);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

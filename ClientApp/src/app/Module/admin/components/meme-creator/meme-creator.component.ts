@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IMeme, Meme } from '../../../../meme';
+import { MemeService } from '../../../../services/meme.service';
 
 @Component({
   selector: 'app-meme-creator',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemeCreatorComponent implements OnInit {
 
-  constructor() { }
+  private memeName: string = "";
+  private memeUrl: string = "";
+
+  submitMeme() {
+    const meme = new Meme();
+
+    meme.name = this.memeName;
+    meme.url = this.memeUrl;
+    this._memeService.postMeme(meme);
+  }
+
+  constructor(private _memeService: MemeService) { }
 
   ngOnInit() {
   }
