@@ -11,20 +11,20 @@ namespace MemeFlix.Migrations
                 name: "MemeLists",
                 columns: table => new
                 {
-                    MemeListId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MemeLists", x => x.MemeListId);
+                    table.PrimaryKey("PK_MemeLists", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Memes",
                 columns: table => new
                 {
-                    MemeId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
@@ -32,12 +32,12 @@ namespace MemeFlix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Memes", x => x.MemeId);
+                    table.PrimaryKey("PK_Memes", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Memes_MemeLists_MemeListId",
                         column: x => x.MemeListId,
                         principalTable: "MemeLists",
-                        principalColumn: "MemeListId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 

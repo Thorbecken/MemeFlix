@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MemeFlix.Models;
 using MemeFlix.Services;
+using static MemeFlix.Factories.MemeListFactory;
 
 namespace MemeFlix.Controllers
 {
@@ -56,7 +57,7 @@ namespace MemeFlix.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != memeList.MemeListId)
+            if (id != memeList.Id)
             {
                 return BadRequest();
             }
@@ -94,8 +95,26 @@ namespace MemeFlix.Controllers
             _context.MemeLists.Add(memeList);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMemeList", new { id = memeList.MemeListId }, memeList);
+            return CreatedAtAction("GetMemeList", new { id = memeList.Id }, memeList);
         }
+
+        // POST: api/MemeLists
+        [HttpPost]
+        public async Task<IActionResult> PostMemeListFromExcel([FromBody] string pathway)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            MemeList memeList = new MemeList(GetExcelFile(pathway), pathway);
+
+            _context.MemeLists.Add(memeList);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetMemeList", new { id = memeList.Id }, memeList);
+        }
+
 
         // DELETE: api/MemeLists/5
         [HttpDelete("{id}")]
@@ -120,7 +139,7 @@ namespace MemeFlix.Controllers
 
         private bool MemeListExists(int id)
         {
-            return _context.MemeLists.Any(e => e.MemeListId == id);
+            return _context.MemeLists.Any(e => e.Id == id);
         }
     }
 }

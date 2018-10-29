@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MemeFlix.Migrations
 {
     [DbContext(typeof(MemeContext))]
-    [Migration("20181026132851_InitialCreate")]
+    [Migration("20181026143422_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace MemeFlix.Migrations
 
             modelBuilder.Entity("MemeFlix.Models.Meme", b =>
                 {
-                    b.Property<int>("MemeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -33,7 +33,7 @@ namespace MemeFlix.Migrations
 
                     b.Property<string>("Url");
 
-                    b.HasKey("MemeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("MemeListId");
 
@@ -42,13 +42,13 @@ namespace MemeFlix.Migrations
 
             modelBuilder.Entity("MemeFlix.Models.MemeList", b =>
                 {
-                    b.Property<int>("MemeListId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
-                    b.HasKey("MemeListId");
+                    b.HasKey("Id");
 
                     b.ToTable("MemeLists");
                 });

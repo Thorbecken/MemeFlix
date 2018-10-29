@@ -56,7 +56,7 @@ namespace MemeFlix.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != meme.MemeId)
+            if (id != meme.Id)
             {
                 return BadRequest();
             }
@@ -94,7 +94,7 @@ namespace MemeFlix.Controllers
             _context.Memes.Add(meme);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMeme", new { id = meme.MemeId }, meme);
+            return CreatedAtAction("GetMeme", new { id = meme.Id }, meme);
         }
 
         // DELETE: api/Memes/5
@@ -120,7 +120,7 @@ namespace MemeFlix.Controllers
 
         private bool MemeExists(int id)
         {
-            return _context.Memes.Any(e => e.MemeId == id);
+            return _context.Memes.Any(e => e.Id == id);
         }
     }
 }
