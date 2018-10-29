@@ -4,11 +4,12 @@ import { AboutPageComponent } from "./about-page/about-page.component";
 import { SubscriptionPageComponent } from "./subscription-page/subscription-page.component";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { WelcomePageComponent } from "./welcome-page/welcome-page.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'welcome',
     pathMatch: 'full'
   },
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: './Module/admin/admin.module#AdminModule'
+  },
+  {
+    path: 'welcome',
+    component: WelcomePageComponent
   },
   {
     path: '**',
