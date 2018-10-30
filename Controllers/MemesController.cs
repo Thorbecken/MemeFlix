@@ -86,12 +86,12 @@ namespace MemeFlix.Controllers
         [HttpPost]
         public async Task<IActionResult> PostMeme([FromBody] Meme meme)
         {
+            Console.WriteLine(meme);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Memes.Add(meme);
+            _context.Set<Meme>().Add(meme);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMeme", new { id = meme.Id }, meme);

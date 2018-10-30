@@ -1,3 +1,18 @@
-<p>
-  meme-creator works!
-</p>
+<div class="container-fluid">
+  <h1>Meme creator form</h1>
+  <div>
+      <label>Name</label>
+      <input type="text" [(ngModel)]="memeName"/>
+    </div>
+    <div>
+      <label>Url</label>
+      <input type="text" [(ngModel)]="memeUrl" />
+    </div>
+
+    <div>
+      <div>{{memeName}}</div>
+      <div>{{memeUrl}}</div>
+    </div>
+
+    <button (click)="submitMeme()">Submit</button>
+</div>
