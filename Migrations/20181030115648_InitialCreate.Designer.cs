@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MemeFlix.Migrations
 {
     [DbContext(typeof(MemeContext))]
-    [Migration("20181026143422_InitialCreate")]
+    [Migration("20181030115648_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
