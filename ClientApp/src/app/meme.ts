@@ -4,6 +4,7 @@ export interface IMeme {
 }
 
 export class Meme {
+  id: number;
   name: String;
   url: String;
 }
