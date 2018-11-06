@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
-import { MemeService } from '../services/meme.service';
-import { MemeListService } from '../services/meme-list.service';
+import { MemeService } from '../../../services/meme.service';
+import { MemeListService } from '../../../services/meme-list.service';
 
 @Component({
   selector: 'app-home-page',

@@ -23,8 +23,15 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\Assets\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\Assets\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\Assets\**" />
+    <None Remove="ClientApp\Assets\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,19 +41,27 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
     <None Remove="ClientApp\src\app\meme.ts" />
-    <None Remove="ClientApp\src\app\Module\admin\admin-routing.module.ts" />
-    <None Remove="ClientApp\src\app\Module\admin\admin.module.ts" />
+    <None Remove="ClientApp\src\app\Modules\admin\admin-routing.module.ts" />
+    <None Remove="ClientApp\src\app\Modules\admin\admin.module.ts" />
+    <None Remove="ClientApp\src\app\shared\constants\auth-constants.ts" />
+    <None Remove="ClientApp\src\app\shared\constants\index.ts" />
+    <None Remove="ClientApp\src\app\shared\index.ts" />
+    <None Remove="ClientApp\src\app\shared\shared.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\meme.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Module\admin\admin-routing.module.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Module\admin\admin.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\meme.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Modules\admin\admin-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Modules\admin\admin.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\constants\auth-constants.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\constants\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\shared.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\Assets\" />
+    <Folder Include="ClientApp\src\app\shared\gaurds\" />
   </ItemGroup>
 
   <ItemGroup>

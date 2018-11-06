@@ -5,12 +5,13 @@ import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SubscriptionPageComponent } from './subscription-page/subscription-page.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { MemePlayerComponent } from './meme-player/meme-player.component';
+import { SubscriptionPageComponent } from './Modules/home/subscription-page/subscription-page.component';
+import { HomePageComponent } from './Modules/home/home-page/home-page.component';
+import { MemePlayerComponent } from './Modules/home/meme-player/meme-player.component';
 import { MemeService } from './services/meme.service';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { PageNotFoundComponent } from './Modules/home/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './Modules/home/welcome-page/welcome-page.component';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 
 @NgModule({
    declarations: [
@@ -28,7 +29,10 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
      HttpClientModule,
      AppRoutingModule
   ],
-  providers: [MemeService],
+  providers: [
+    MemeService,
+    AdminAuthGuardService
+  ],
    bootstrap: [
       AppComponent
    ]

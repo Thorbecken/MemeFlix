@@ -1,10 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AboutPageComponent } from "./about-page/about-page.component";
-import { SubscriptionPageComponent } from "./subscription-page/subscription-page.component";
-import { HomePageComponent } from "./home-page/home-page.component";
-import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { WelcomePageComponent } from "./welcome-page/welcome-page.component";
+import { AboutPageComponent } from "./Modules/home/about-page/about-page.component";
+import { SubscriptionPageComponent } from "./Modules/home/subscription-page/subscription-page.component";
+import { HomePageComponent } from "./Modules/home/home-page/home-page.component";
+import { PageNotFoundComponent } from "./Modules/home/page-not-found/page-not-found.component";
+import { WelcomePageComponent } from "./Modules/home/welcome-page/welcome-page.component";
+import { CanActivate } from "@angular/router/src/utils/preactivation";
+import { AdminAuthGuardService } from "./services/admin-auth-guard.service";
+
+const ADMIN_ROLE = 'Admin';
 
 const routes: Routes = [
   {
@@ -26,7 +30,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: './Module/admin/admin.module#AdminModule'
+    loadChildren: './Module/admin/admin.module#AdminModule',
+    canActivate: [AdminAuthGuardService],
+    data: {
+      expectedRole: ADMIN_ROLE
+    }
   },
   {
     path: 'welcome',

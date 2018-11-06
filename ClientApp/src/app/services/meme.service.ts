@@ -1,7 +1,7 @@
 import { Injectable, ErrorHandler } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, Observer, throwError  } from 'rxjs';
-import { IMeme, Meme } from '../meme';
+import { Observable, Observer, throwError } from 'rxjs';
+import { IMeme, Meme } from '../shared/models/meme';
 import { Response, Headers } from '@angular/http';
 import { catchError, retry } from 'rxjs/operators';
 
