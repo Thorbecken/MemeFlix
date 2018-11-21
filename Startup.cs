@@ -24,7 +24,7 @@ namespace MemeFlix
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=MemeFlixDb;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<MemeContext>
                 (options => options.UseSqlServer(connection));
 

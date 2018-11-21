@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from "./Modules/home/page-not-found/page-not-fo
 import { WelcomePageComponent } from "./Modules/home/welcome-page/welcome-page.component";
 import { CanActivate } from "@angular/router/src/utils/preactivation";
 import { AdminAuthGuardService } from "./services/admin-auth-guard.service";
+import { MemeHeavenPageComponent } from "./Modules/home/meme-heaven-page/meme-heaven-page.component";
 
 const ADMIN_ROLE = 'Admin';
 
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: './Module/admin/admin.module#AdminModule',
+    loadChildren: './Modules/admin/admin.module#AdminModule',
     canActivate: [AdminAuthGuardService],
     data: {
       expectedRole: ADMIN_ROLE
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomePageComponent
+  },
+  {
+    path: 'memeHeaven',
+    component: MemeHeavenPageComponent
   },
   {
     path: '**',

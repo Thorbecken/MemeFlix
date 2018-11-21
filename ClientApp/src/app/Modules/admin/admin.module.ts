@@ -4,13 +4,13 @@ import { AdminComponent } from "./admin.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { NgModule } from '@angular/core';
 import { MemeCreatorComponent } from './components/meme-creator/meme-creator.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   declarations: [
     AdminComponent,

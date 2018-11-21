@@ -12,6 +12,7 @@ import { MemeService } from './services/meme.service';
 import { PageNotFoundComponent } from './Modules/home/page-not-found/page-not-found.component';
 import { WelcomePageComponent } from './Modules/home/welcome-page/welcome-page.component';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { MemeHeavenPageComponent } from './Modules/home/meme-heaven-page/meme-heaven-page.component';
 
 @NgModule({
    declarations: [
@@ -21,7 +22,8 @@ import { AdminAuthGuardService } from './services/admin-auth-guard.service';
     HomePageComponent,
     MemePlayerComponent,
     PageNotFoundComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    MemeHeavenPageComponent
   ],
    imports: [
      BrowserModule,
